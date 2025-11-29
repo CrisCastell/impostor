@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import type { GamePhase, GameState, Player } from '../types';
+import type { GameState } from '../types';
 import { WORDS } from '../data/words';
 
-const IMPOSTOR_WORD = 'IMPOSTOR'; // change here if you want a different text
 
 function pickRandom<T>(items: T[]): T {
   const idx = Math.floor(Math.random() * items.length);
