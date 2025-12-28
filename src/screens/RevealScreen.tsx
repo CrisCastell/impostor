@@ -6,7 +6,7 @@ import { PrimaryButton } from '../components/PrimaryButton';
 interface Props {
   players: Player[];
   secretWord: string | null;
-  impostorId: string | null;
+  impostorIds: string[];
   currentRevealIndex: number;
   onNextReveal: () => void;
   onBackToLobby: () => void;
@@ -18,7 +18,7 @@ type PendingAction = null | 'newRound' | 'editPlayers';
 export function RevealScreen({
   players,
   secretWord,
-  impostorId,
+  impostorIds,
   currentRevealIndex,
   onNextReveal,
   onBackToLobby,
@@ -29,7 +29,7 @@ export function RevealScreen({
 
   const isDone = currentRevealIndex >= players.length;
   const player = players[currentRevealIndex];
-  const impostorPlayer = players.find((p) => p.id === impostorId) || null;
+  const impostorPlayers = players.filter((p) => impostorIds.includes(p.id));
 
   const handleMainTap = () => {
     if (isDone) return;
@@ -55,7 +55,7 @@ export function RevealScreen({
     setPendingAction(null);
   };
 
-  if (!secretWord || !impostorId) {
+  if (!secretWord || impostorIds.length === 0) {
     return (
       <ScreenContainer title="Error">
         <p className="text">Ronda configurada incorrectamente.</p>
@@ -90,15 +90,19 @@ export function RevealScreen({
               </h2>
 
               <p className="text">
-                Antes de continuar, el impostor en esta ronda fue:
+                Antes de continuar, {impostorIds.length === 1 ? 'el impostor' : 'los impostores'} en esta ronda {impostorIds.length === 1 ? 'fue' : 'fueron'}:
               </p>
 
-              {impostorPlayer ? (
-                <p className="impostor-name">
-                  {impostorPlayer.name}
-                </p>
+              {impostorPlayers.length > 0 ? (
+                <div>
+                  {impostorPlayers.map((impostor) => (
+                    <p key={impostor.id} className="impostor-name">
+                      {impostor.name}
+                    </p>
+                  ))}
+                </div>
               ) : (
-                <p className="text">No se pudo determinar el impostor.</p>
+                <p className="text">No se pudo determinar {impostorIds.length === 1 ? 'el impostor' : 'los impostores'}.</p>
               )}
 
               <p className="text text-small">
@@ -121,7 +125,7 @@ export function RevealScreen({
     );
   }
 
-  const isImpostor = player.id === impostorId;
+  const isImpostor = impostorIds.includes(player.id);
   const wordToShow = isImpostor ? 'IMPOSTOR' : secretWord;
 
   return (

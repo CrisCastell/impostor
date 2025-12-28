@@ -9,13 +9,15 @@ function App() {
     goToLobby,
     addPlayer,
     removePlayer,
+    toggleCategory,
+    setImpostorCount,
     startRound,
     nextReveal,
     backToLobby,
     resetGame,
   } = useGameState();
 
-  const { phase, players, secretWord, impostorId, currentRevealIndex } = state;
+  const { phase, players, secretWord, impostorIds, currentRevealIndex } = state;
 
   if (phase === 'intro') {
     return <IntroScreen onStart={goToLobby} />;
@@ -25,8 +27,12 @@ function App() {
     return (
       <LobbyScreen
         players={players}
+        selectedCategories={state.categories}
+        impostorCount={state.impostorCount}
         onAddPlayer={addPlayer}
         onRemovePlayer={removePlayer}
+        onToggleCategory={toggleCategory}
+        onSetImpostorCount={setImpostorCount}
         onStartRound={startRound}
       />
     );
@@ -37,7 +43,7 @@ function App() {
       <RevealScreen
         players={players}
         secretWord={secretWord}
-        impostorId={impostorId}
+        impostorIds={impostorIds}
         currentRevealIndex={currentRevealIndex}
         onNextReveal={nextReveal}
         onBackToLobby={backToLobby}

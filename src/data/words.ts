@@ -1,62 +1,127 @@
 export const WORDS = [
-  // Continentes
-  "África", "América", "Asia", "Europa", "Oceanía", "Antártida",
-
-  // Países
-  "Argentina", "Brasil", "Chile", "Uruguay", "Paraguay", "Bolivia",
-  "Perú", "Ecuador", "Colombia", "Venezuela", "México", "Estados Unidos",
-  "Canadá", "España", "Francia", "Alemania", "Italia", "Portugal", "Inglaterra",
-  "Irlanda", "Suecia", "Noruega", "Finlandia", "Rusia", "China", "Japón", "Corea del Sur",
-  "Australia", "Nueva Zelanda", "Sudáfrica", "Egipto", "Marruecos", "India",
-  "Arabia Saudita", "Israel", "Turquía", "Grecia", "Ucrania", "Suiza",
-  "Países Bajos", "Bélgica", "Polonia", "Austria", "Hungría",
-
-  // Lugares comunes
-  "Cine", "Supermercado", "Biblioteca", "Hospital", "Farmacia", "Ferretería",
-  "Escuela", "Universidad", "Gimnasio", "Restaurante", "Bar", "Parque",
-  "Plaza", "Museo", "Aeropuerto", "Estación de tren", "Terminal de ómnibus",
-  "Panadería", "Carnicería", "Verdulería", "Kiosco", "Centro Comercial",
-  "Estadio", "Cancha de fútbol", "Pileta", "Playa", "Montaña", "Bosque",
-  "Playón deportivo", "Oficina", "Banco", "Comisaría", "Teatro", "Zoológico",
-  "Acuario", "Lavandería", "Estación de servicio", "Heladería", "Mercado",
-  "Carnaval", "Feria", "Camping", "Puente", "Puerto",
-
-  // Cultura pop argentina
-  "Diego Maradona", "Lionel Messi", "Charly García", "Fito Páez",
-  "Gustavo Cerati", "Ricardo Darín", "Susana Giménez", "Mirtha Legrand",
-  "Moria Casán", "Marcelo Tinelli", "Guillermo Francella", "Tini Stoessel",
-  "Lali Espósito", "Spinetta", "Pappo", "Fabiana Cantilo", "Juan Román Riquelme",
-  "Carlos Tévez", "La Mona Jiménez", "Abel Pintos", "Wos", "Duki", "Nicki Nicole",
-  "Sandro", "Tato Bores", "El Diego", "El Kun Agüero", "Alfonsín", "Evita",
-  "El Zorro" /* versión Argenta por TV 😂 */,
-
-  // Cultura pop mundial (reales)
-  "Michael Jackson", "Beyoncé", "Shakira", "Bad Bunny", "Taylor Swift",
-  "Drake", "Eminem", "Britney Spears", "Rihanna", "Adele",
-  "Cristiano Ronaldo", "Neymar", "Mbappé", "LeBron James", "Michael Jordan",
-  "Oprah Winfrey", "Dwayne Johnson", "Keanu Reeves", "Tom Cruise",
-  "Lady Gaga", "Katy Perry", "The Weeknd", "Ed Sheeran", "Billie Eilish",
-  "Ariana Grande", "Selena Gomez", "Jennifer Lopez", "Johnny Depp",
-  "Morgan Freeman", "Will Smith", "Robert Downey Jr.", "Scarlett Johansson",
-  "Hugh Jackman", "Zendaya", "Benedict Cumberbatch",
-
-  // Cultura pop mundial (ficticios)
-  "Harry Potter", "Hermione Granger", "Ron Weasley", "Lord Voldemort",
-  "Frodo", "Gandalf", "Aragorn", "Legolas", "Gollum",
-  "Darth Vader", "Luke Skywalker", "Yoda", "Han Solo", "Leia Organa",
-  "Spider-Man", "Iron Man", "Capitán América", "Thor", "Hulk",
-  "Black Widow", "Thanos", "Wanda Maximoff", "Doctor Strange",
-  "Batman", "Superman", "Wonder Woman", "Flash", "Aquaman",
-  "Joker", "Harley Quinn",
-  "Homer Simpson", "Bart Simpson", "Marge Simpson", "Lisa Simpson",
-  "Goku", "Vegeta", "Naruto", "Sasuke", "Luffy", "Zoro",
-  "Rick Sanchez", "Morty", "Eleven", "Vecna",
-  "Mickey Mouse", "Bob Esponja", "Patricio Estrella",
-
-  // Bonus lugares y cosas para llegar a más de 180
-  "Computadora", "Autobús", "Motocicleta", "Cámara", "Micrófono",
-  "Telescopio", "Celular", "Reloj", "Cama", "Ventana", "Escritorio",
-  "Sillón", "Televisor", "Parlante", "Auriculares", "Libro", "Diario",
-  "Revista", "Cuaderno", "Lámpara", "Ascensor", "Escalera", "Garage",
-  "Jardín", "Boutique", "Galería", "Estacionamiento", "Pizzería"
+  {
+    label: 'geografia',
+    words: [
+      // Países
+      "Argentina", "Brasil", "Chile", "Uruguay", "Paraguay", "Bolivia",
+      "Perú", "Ecuador", "Colombia", "Venezuela", "México",
+      "Estados Unidos", "Canadá", "España", "Francia", "Alemania",
+      "Italia", "Portugal", "Inglaterra", "Irlanda", "Suecia",
+      "Noruega", "Finlandia", "Rusia", "China", "Japón",
+      "Corea del Sur", "India", "Australia", "Nueva Zelanda",
+      "Egipto", "Marruecos", "Sudáfrica", "Turquía", "Grecia",
+      "Suiza", "Polonia", "Austria", "Hungría", "Ucrania",
+  
+      // Regiones / continentes
+      "América", "Europa", "Asia", "África", "Oceanía", "Antártida",
+  
+      // Lugares geográficos
+      "Amazonas", "Patagonia", "Himalaya", "Sahara", "Alpes",
+      "Andes", "Caribe", "Medio Oriente"
+    ]
+  },
+  {
+    label: 'lugares',
+    words: [
+      "Cine", "Teatro", "Museo", "Biblioteca", "Escuela", "Universidad",
+      "Hospital", "Farmacia", "Supermercado", "Centro comercial",
+      "Restaurante", "Bar", "Café", "Panadería", "Carnicería",
+      "Verdulería", "Kiosco", "Mercado", "Feria",
+  
+      "Plaza", "Parque", "Jardín", "Bosque", "Playa", "Montaña",
+      "Camping", "Zoológico", "Acuario",
+  
+      "Estadio", "Cancha de fútbol", "Gimnasio", "Pileta",
+      "Playón deportivo",
+  
+      "Aeropuerto", "Estación de tren", "Terminal de ómnibus",
+      "Puerto", "Estación de servicio",
+  
+      "Banco", "Oficina", "Comisaría", "Municipalidad",
+      "Hotel", "Hostel", "Motel",
+  
+      "Casa", "Departamento", "Edificio", "Torre", "Puente"
+    ]
+  },
+  {
+    label: 'cultura_argentina',
+    words: [
+      "Diego Maradona", "Lionel Messi", "Juan Román Riquelme",
+      "Carlos Tévez", "Sergio Agüero",
+  
+      "Charly García", "Gustavo Cerati", "Luis Alberto Spinetta",
+      "Fito Páez", "Pappo", "Fabiana Cantilo",
+  
+      "Ricardo Darín", "Guillermo Francella", "Norma Aleandro",
+      "Susana Giménez", "Mirtha Legrand", "Moria Casán",
+      "Marcelo Tinelli",
+  
+      "Lali Espósito", "Tini Stoessel", "Nicki Nicole",
+      "Wos", "Duki", "Abel Pintos", "La Mona Jiménez",
+  
+      "Sandro", "Tato Bores", "Mercedes Sosa",
+  
+      "Raúl Alfonsín", "Eva Perón", "Néstor Kirchner"
+    ]
+  },
+  {
+    label: 'cultura pop (personajes)',
+    words: [
+      "Michael Jackson", "Beyoncé", "Taylor Swift", "Rihanna",
+      "Adele", "Shakira", "Bad Bunny", "Drake", "Eminem",
+      "Lady Gaga", "The Weeknd", "Ed Sheeran", "Billie Eilish",
+  
+      "Cristiano Ronaldo", "Neymar", "Kylian Mbappé",
+      "LeBron James", "Michael Jordan",
+  
+      "Johnny Depp", "Leonardo DiCaprio", "Brad Pitt",
+      "Tom Cruise", "Keanu Reeves", "Dwayne Johnson",
+      "Robert Downey Jr.", "Scarlett Johansson",
+      "Zendaya", "Hugh Jackman", "Morgan Freeman"
+    ]
+  },
+  {
+    label: 'cultura ficticios',
+    words: [
+      // Harry Potter
+      "Harry Potter", "Hermione Granger", "Ron Weasley", "Voldemort",
+  
+      // El Señor de los Anillos
+      "Frodo", "Gandalf", "Aragorn", "Legolas", "Gollum",
+  
+      // Star Wars
+      "Darth Vader", "Luke Skywalker", "Yoda", "Han Solo", "Leia Organa",
+  
+      // Marvel / DC
+      "Spider-Man", "Iron Man", "Capitán América", "Thor",
+      "Hulk", "Thanos", "Doctor Strange",
+      "Batman", "Joker", "Wonder Woman",
+  
+      // Series / animación
+      "Homer Simpson", "Bart Simpson", "Rick Sanchez", "Morty",
+      "Eleven", "Vecna",
+  
+      // Anime
+      "Goku", "Vegeta", "Naruto", "Sasuke", "Luffy", "Zoro",
+  
+      // Infantil
+      "Mickey Mouse", "Bob Esponja", "Patricio Estrella"
+    ]
+  },
+  {
+    label: "objetos",
+    words: [
+      "Celular", "Computadora", "Tablet", "Televisor",
+      "Auriculares", "Parlante", "Control remoto",
+  
+      "Cámara", "Micrófono", "Reloj", "Lámpara",
+  
+      "Mesa", "Silla", "Sillón", "Cama", "Escritorio",
+      "Ventana", "Puerta", "Espejo",
+  
+      "Libro", "Cuaderno", "Mochila", "Bolso",
+  
+      "Auto", "Motocicleta", "Bicicleta", "Autobús"
+    ]
+  },
 ];

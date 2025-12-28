@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { GameState } from '../types';
+import type { GameState, Category } from '../types';
 import { WORDS } from '../data/words';
 
 
@@ -8,12 +8,19 @@ function pickRandom<T>(items: T[]): T {
   return items[idx];
 }
 
+function pickRandomMultiple<T>(items: T[], count: number): T[] {
+  const shuffled = [...items].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
+}
+
 export function useGameState() {
   const [state, setState] = useState<GameState>({
     phase: 'intro',
     players: [],
     secretWord: null,
-    impostorId: null,
+    impostorIds: [],
+    categories: [],
+    impostorCount: 1,
     currentRevealIndex: 0,
   });
 
@@ -50,23 +57,64 @@ export function useGameState() {
     }));
   };
 
+  const toggleCategory = (category: Category) => {
+    setState(prev => {
+      const isSelected = prev.categories.includes(category);
+      return {
+        ...prev,
+        categories: isSelected
+          ? prev.categories.filter(c => c !== category)
+          : [...prev.categories, category],
+      };
+    });
+  };
+
+  const setImpostorCount = (count: 1 | 2) => {
+    setState(prev => ({
+      ...prev,
+      impostorCount: count,
+    }));
+  };
+
   const startRound = () => {
     setState(prev => {
       if (prev.players.length < 3) {
-        // as a safety guard – you can surface this in UI if needed
         console.warn('Need at least 3 players to start');
         return prev;
       }
 
-      const secretWord = pickRandom(WORDS);
-      const impostorIndex = Math.floor(Math.random() * prev.players.length);
-      const impostorId = prev.players[impostorIndex].id;
+      if (prev.categories.length === 0) {
+        console.warn('At least one category must be selected before starting');
+        return prev;
+      }
+
+      // Collect all words from selected categories
+      const allWords: string[] = [];
+      prev.categories.forEach(categoryLabel => {
+        const category = WORDS.find(w => w.label === categoryLabel);
+        if (category) {
+          allWords.push(...category.words);
+        }
+      });
+
+      if (allWords.length === 0) {
+        console.warn('No words found for selected categories');
+        return prev;
+      }
+
+      const secretWord = pickRandom(allWords);
+      
+      // Select 1 or 2 impostors based on impostorCount
+      const impostorIds = pickRandomMultiple(
+        prev.players.map(p => p.id),
+        Math.min(prev.impostorCount, prev.players.length)
+      );
 
       return {
         ...prev,
         phase: 'reveal',
         secretWord,
-        impostorId,
+        impostorIds,
         currentRevealIndex: 0,
       };
     });
@@ -87,7 +135,7 @@ export function useGameState() {
       ...prev,
       phase: 'lobby',
       secretWord: null,
-      impostorId: null,
+      impostorIds: [],
       currentRevealIndex: 0,
     }));
   };
@@ -97,7 +145,9 @@ export function useGameState() {
       phase: 'intro',
       players: [],
       secretWord: null,
-      impostorId: null,
+      impostorIds: [],
+      categories: [],
+      impostorCount: 1,
       currentRevealIndex: 0,
     });
   };
@@ -108,6 +158,8 @@ export function useGameState() {
     addPlayer,
     removePlayer,
     resetPlayers,
+    toggleCategory,
+    setImpostorCount,
     startRound,
     nextReveal,
     backToLobby,
